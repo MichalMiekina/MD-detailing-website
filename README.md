@@ -1,4 +1,4 @@
-# cars-md
+# cars-MD
 
 ## Project setup
 ```
