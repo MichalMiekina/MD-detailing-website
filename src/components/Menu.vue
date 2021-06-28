@@ -2,7 +2,7 @@
   <div>
     <nav id="menu">
       <MenuPoint :point="point" :key="point.id" v-for="point in points" :window="window"/>
-      <MenuBurger :window="window"/>
+      <MenuBurger :window="window" :points="points"/>
     </nav>
     
   </div>
