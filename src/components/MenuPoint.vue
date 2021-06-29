@@ -1,6 +1,8 @@
 <template>
   <div class="point" v-if="window.width > 800">
-    <span>{{ point.text }}</span>
+    
+    
+    <router-link :to=point.path><span>{{ point.text }}</span></router-link>
   </div>
 </template>
 

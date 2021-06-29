@@ -1,10 +1,15 @@
 <template>
   <div>
     <nav id="menu">
-      <MenuPoint :point="point" :key="point.id" v-for="point in points" :window="window"/>
-      <MenuBurger :window="window" :points="points"/>
+      <MenuPoint
+        :point="point"
+        :key="point.id"
+        v-for="point in points"
+        :window="window"
+        
+      />
+      <MenuBurger :window="window" :points="points" />
     </nav>
-    
   </div>
 </template>
 
@@ -16,21 +21,20 @@ export default {
   props: ["window"],
   components: {
     MenuPoint,
-    MenuBurger
+    MenuBurger,
   },
   data() {
     return {
       points: [
-        { id: "1", text: "home" },
-        { id: "2", text: "rezerwacje" },
-        { id: "3", text: "cennik" },
-        { id: "4", text: "oferta" },
-        { id: "5", text: "galeria" },
-        { id: "6", text: "kontakt" },
+        { id: "1", text: "home" ,path: "/", },
+        { id: "2", text: "rezerwacje" ,path: "/rezerwacje",},
+        { id: "3", text: "cennik" ,path: "/cennik",},
+        { id: "4", text: "oferta" ,path: "/oferta",},
+        { id: "5", text: "galeria" ,path: "/galeria",},
+        { id: "6", text: "kontakt" ,path: "/kontakt",},
       ],
     };
   },
-  
 };
 </script>
 

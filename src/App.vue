@@ -1,6 +1,7 @@
 <template>
   <div>
     <Menu :window="window" />
+    <router-view></router-view>
   </div>
 </template>
 
