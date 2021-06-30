@@ -1,11 +1,11 @@
 import Vue from "vue";
 import App from "./App.vue";
-import Home from "./components/Home.vue";
-import Rezerwacje from "./components/Rezerwacje.vue";
-import Cennik from "./components/Cennik.vue";
-import Oferta from "./components/Oferta.vue";
-import Galeria from "./components/Galeria.vue";
-import Kontakt from "./components/Kontakt.vue";
+import Home from "./subsites/Home.vue";
+import Rezerwacje from "./subsites/Rezerwacje.vue";
+import Cennik from "./subsites/Cennik.vue";
+import Oferta from "./subsites/Oferta.vue";
+import Galeria from "./subsites/Galeria.vue";
+import Kontakt from "./subsites/Kontakt.vue";
 
 import VueRouter from "vue-router";
 Vue.use(VueRouter);

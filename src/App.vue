@@ -38,8 +38,20 @@ export default {
 </script>
 
 <style>
-body {
+*{
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+}
+body{
+  background-color: #d4a747;
+}
+
+div>h1{
+  display: flex;
+  justify-content: center;
+  font-family: URW Chancery L, cursive;
+  font-size: 300%;
+  width: 60%;
 }
 </style>

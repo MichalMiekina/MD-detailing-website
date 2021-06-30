@@ -1,23 +1,21 @@
 <template>
   <div class="point" v-if="window.width > 800">
-    
-    
-    <router-link :to=point.path><span>{{ point.text }}</span></router-link>
+    <router-link class="routerPoint" :to="point.path">
+      <span>{{ point.text }}</span>
+    </router-link>
   </div>
 </template>
 
 <script>
 export default {
-  props: ["point","window"],
+  props: ["point", "window"],
   data() {
-    return {
-    };
+    return {};
   },
 };
 </script>
 
 <style>
-
 .point {
   display: flex;
   flex-direction: column;
@@ -27,16 +25,28 @@ export default {
   cursor: pointer;
   align-items: center;
   transition: background-color 1s ease-out;
-  /* color: #fff; */
+}
+.point:hover {
+  background-color: #aaa;
 }
 .point span {
-  flex-direction: row;
   justify-content: center;
   align-content: center;
   font-family: "Monaco", monospace;
   font-size: 125%;
 }
-.point:hover {
-  background-color: #aaa;
+.routerPoint {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+.routerPoint span {
+  display: flex;
+}
+a {
+  text-decoration: none;
+  color: black;
 }
 </style>

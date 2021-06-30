@@ -1,13 +1,13 @@
 <template>
   <div>
-      <h1>Strona główna</h1>
+    <h1>Zarezerwuj termin</h1>
   </div>
 </template>
 
 <script>
 export default {
 
-}
+};
 </script>
 
 <style>

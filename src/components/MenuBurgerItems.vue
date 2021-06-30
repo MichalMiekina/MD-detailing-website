@@ -1,6 +1,8 @@
 <template>
   <div class="burger-list" v-if="burger_activity">
-    <span>{{ point.text }}</span>
+    <router-link class="routerPoint" :to="point.path">
+      <span>{{ point.text }}</span>
+    </router-link>
   </div>
 </template>
 
@@ -20,6 +22,10 @@ ul {
 }
 .burger-list{
     background-color: #aaa;
+    transition: background-color linear .5s;
+}
+.burger-list:hover{
+  background-color: #dfdfdf;
 }
 .burger-list span{
     display: flex;
