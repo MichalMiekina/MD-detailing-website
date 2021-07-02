@@ -37,7 +37,7 @@ export default {
 };
 </script>
 
-<style>
+<style style="scss">
 *{
   margin: 0;
   padding: 0;

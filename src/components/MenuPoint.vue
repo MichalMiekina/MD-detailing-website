@@ -15,36 +15,35 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss">
 .point {
-  display: flex;
-  flex-direction: column;
   height: 80px;
   width: 100%;
-  justify-content: center;
   cursor: pointer;
-  align-items: center;
   transition: background-color 1s ease-out;
-}
-.point:hover {
-  background-color: #aaa;
-}
-.point span {
+
+  :hover{
+    background-color: #aaa;
+  }
+
+  span{
   justify-content: center;
-  align-content: center;
-  font-family: "Monaco", monospace;
-  font-size: 125%;
+  font: 125% "Monaco", monospace;
+  }
 }
+
 .routerPoint {
   display: flex;
   flex-direction: column;
   justify-content: center;
   width: 100%;
   height: 100%;
+
+  span{
+    display: flex;
+  }
 }
-.routerPoint span {
-  display: flex;
-}
+
 a {
   text-decoration: none;
   color: black;

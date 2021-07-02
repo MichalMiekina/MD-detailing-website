@@ -42,12 +42,4 @@ export default {
   justify-content: flex-end;
   flex-direction: row;
 }
-.burger > img {
-  cursor: pointer;
-  height: 100%;
-}
-.burger-list > img {
-  cursor: pointer;
-  height: 100%;
-}
 </style>

@@ -15,24 +15,26 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss">
 ul {
   margin-top: 100px;
   position: absolute;
 }
+
 .burger-list{
-    background-color: #aaa;
-    transition: background-color linear .5s;
-}
-.burger-list:hover{
-  background-color: #dfdfdf;
-}
-.burger-list span{
+  background-color: #aaa;
+  transition: background-color linear .5s;
+
+  span{
     display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-content: center;
-  font-family: "Monaco", monospace;
-  font-size: 125%;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+    font: 125% "Monaco", monospace;
+  }
+
+  :hover{
+    background-color: #dfdfdf;
+  }
 }
 </style>
