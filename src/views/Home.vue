@@ -1,6 +1,7 @@
 <template>
   <div>
-    <h1>M&Detailing</h1>
+    <h1>M&DetailinGG</h1>
+    <img src="../assets/awards/1.jpg" alt="award">
   </div>
 </template>
 
@@ -10,6 +11,8 @@ export default {
 };
 </script>
 
-<style scoped>
-
+<style>
+body{
+  background-color: #ffffff;
+}
 </style>

@@ -1,6 +1,6 @@
 <template>
-    <carousel-3d>
-      <slide v-for="slide in slides" :key="slide.index" :index="slide.index">
+    <carousel-3d :style="{width:'100%', height: '100vh'}"  >
+      <slide v-for="slide in slides" :key="slide.index" :index="slide.index" :style="{width:'25vw', height: '20vw'}" >
         <img :slide="slide" :src="slide.src" alt="test" />
       </slide>
       <!-- <slide :index="20">
@@ -17,6 +17,7 @@
 
 <script>
 import { Carousel3d, Slide } from "vue-carousel-3d";
+// Slide.config.width=10
 
 export default {
   components: {
@@ -28,14 +29,15 @@ export default {
       slides: [
         { src: require('../assets/mdphotos/1.jpg'), index: 0 },
         { src: require('../assets/mdphotos/2.jpg'), index: 1 },
-        { src: require('../assets/mdphotos/3.jpg'), index: 2 },
-        { src: require('../assets/mdphotos/4.jpg'), index: 3 },
-        { src: require('../assets/mdphotos/5.jpg'), index: 4 },
-        { src: require('../assets/mdphotos/6.png'), index: 5 },
-        { src: require('../assets/mdphotos/7.jpg'), index: 6 },
-        { src: require('../assets/mdphotos/8.jpg'), index: 7 },
-        { src: require('../assets/mdphotos/9.jpg'), index: 8 },
-        { src: require('../assets/mdphotos/10.jpg'), index: 9 },
+        { src: require('../assets/mdphotos/4.jpg'), index: 2 },
+        { src: require('../assets/mdphotos/5.jpg'), index: 3 },
+        { src: require('../assets/mdphotos/10.jpg'), index: 4 },
+        { src: require('../assets/mdphotos/11.jpg'), index: 5 },
+        // { src: require('../assets/mdphotos/6.png'), index: 6 },
+        // { src: require('../assets/mdphotos/3.jpg'), index: 2 },
+        // { src: require('../assets/mdphotos/7.jpg'), index: 6 },
+        // { src: require('../assets/mdphotos/8.jpg'), index: 7 },
+        // { src: require('../assets/mdphotos/9.jpg'), index: 8 },
       ],
     };
   },
