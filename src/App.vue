@@ -39,6 +39,7 @@ export default {
 
 <style style="scss">
 *{
+  
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -54,4 +55,5 @@ div>h1{
   font-size: 300%;
   width: 60%;
 }
+
 </style>

@@ -1,109 +1,36 @@
 <template>
-    <div class="container">
-        <form ref="form" @submit="sendEmail">
-          <label>Name</label>
-          <input 
-            type="text" 
-            v-model="name"
-            name="name"
-            placeholder="Your Name"
-          >
-          <label>Email</label>
-          <input 
-            type="email" 
-            v-model="email"
-            name="email"
-            placeholder="Your Email"
-            >
-          <label>Message</label>
-          <textarea 
-            name="message"
-            v-model="message"
-            cols="30" rows="5"
-            placeholder="Message">
-          </textarea>
-          
-          <input type="submit" value="Send" @click="submit">
-        </form>
+  <div>
+    <h1>kontakt</h1>
+
+    <div class="mapContainer">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1072.3005243500056!2d19.020442373400662!3d50.266259580998025!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4716cfd2ec447aed%3A0x6048df439216e0b4!2sM%26D%20Detailing!5e0!3m2!1sen!2spl!4v1635758283825!5m2!1sen!2spl"
+        width="100%"
+        height="450"
+        style="border: 0"
+        allowfullscreen=""
+        loading="lazy"
+      ></iframe>
     </div>
+  </div>
 </template>
 
 <script>
-import emailjs from 'emailjs-com';
-
 export default {
-  name: 'ContactUs',
-  data() {
-    return {
-      // name: '',
-      // email: '',
-      // message: ''
-    }
-  },
-  methods: {
-    submit: function(){
-      this.$refs.form.submit();
-      
-    },
-    sendEmail(e) {
-      try {
-        emailjs.sendForm('service_ol6pdly','template_7erx37r', e.target,
-        'user_DUZxsiRaTqgFYHEVIAknf', {
-          name: this.name,
-          email: this.email,
-          message: this.message
-        })
 
-      } catch(error) {
-          console.log({error})
-      }
-      // Reset form field
-      // this.name = ''
-      // this.email = ''
-      // this.message = ''
-    },
-  }
 }
 </script>
 
 <style scoped>
-* {box-sizing: border-box;}
-
-.container {
-  display: block;
-  margin:auto;
-  text-align: center;
-  border-radius: 5px;
-  background-color: #f2f2f2;
-  padding: 20px;
-  width: 50%;
-}
-
-label {
-  float: left;
-}
-
-input[type=text], [type=email], textarea {
-  width: 100%;
-  padding: 12px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+* {
   box-sizing: border-box;
-  margin-top: 6px;
-  margin-bottom: 16px;
-  resize: vertical;
 }
 
-input[type=submit] {
-  background-color: #4CAF50;
-  color: white;
-  padding: 12px 20px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
+.mapContainer {
+  padding-top: 36px;
+  margin: auto;
+  text-align: center;
 }
 
-input[type=submit]:hover {
-  background-color: #45a049;
-}
+
 </style>

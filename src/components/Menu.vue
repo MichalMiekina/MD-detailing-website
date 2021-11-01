@@ -27,10 +27,11 @@ export default {
     return {
       points: [
         { id: "1", text: "home" ,path: "/", },
-        { id: "2", text: "rezerwacje" ,path: "/rezerwacje",},
-        { id: "3", text: "cennik" ,path: "/cennik",},
-        { id: "4", text: "oferta" ,path: "/oferta",},
-        { id: "5", text: "galeria" ,path: "/galeria",},
+        { id: "2", text: "cennik" ,path: "/cennik",},
+        { id: "3", text: "rezerwacje" ,path: "/rezerwacje",},
+        { id: "4", text: "galeria" ,path: "/galeria",},
+        { id: "5", text: "oferta" ,path: "/oferta",},
+        
         { id: "6", text: "kontakt" ,path: "/kontakt",},
       ],
     };

@@ -41,5 +41,6 @@ export default {
   display: flex;
   justify-content: flex-end;
   flex-direction: row;
+  z-index: 100;
 }
 </style>
