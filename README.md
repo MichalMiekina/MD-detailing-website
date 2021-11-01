@@ -22,3 +22,6 @@ yarn lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+
+for local running add "SET NODE_OPTIONS=--openssl-legacy-provider && " but remove this from package.json before build and deploy for server
