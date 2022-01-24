@@ -12,7 +12,7 @@
 
       <ul>
       Wolne terminy:
-      <li :date="date.value" :key="date.value" v-for="date in dates">{{date.value}}</li>
+      <li :date="date" :key="date" v-for="date in dates">{{date}}</li>
       </ul>
     </div>
 
@@ -38,7 +38,6 @@
         >
         </textarea>
 
-        <input type="sumbit" value="API" @click="buildCalendar" />
         <input type="submit" value="Send" @click="submit" />
       </form>
     </div>
@@ -50,7 +49,7 @@ import emailjs from "emailjs-com";
 // import { getFirestore, collection, getDocs } from "firebase/firestore/lite";
 // Import the functions you need from the SDKs you need
 // import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.4/firebase-app.js";
-import { getDatabase, ref, get, set, child } from "firebase/database";
+import { getDatabase, ref, get, update, child } from "firebase/database";
 
 export default {
   name: "ContactUs",
@@ -62,16 +61,17 @@ export default {
       message: "",
       dates: [1, 23, 4],
       date: "",
+      datesAmount: 0,
       // dates2: getDates(),
     };
   },
   methods: {
     addDate(){
       const db = getDatabase();
-      console.log(this.date)
-      set(ref(db, "dates/"+(this.dates.length+2)), {value: this.date})
+      console.log(this.dates.length)
+      update(ref(db, "dates"), {[(this.datesAmount+1)]: this.date})
       .then(()=>{
-        alert("data stored successfully")
+        // alert("data stored successfully")
       })
       .catch((error)=>{
         alert("unsuccesful, error: "+error)
@@ -79,8 +79,8 @@ export default {
       window.location.reload();
     },
     testfun(dates) {
-      console.log(dates);
       this.dates = dates
+      console.log(this.dates)
     },
     getDates() {
       const db = getDatabase();
@@ -89,7 +89,9 @@ export default {
       get(child(dbref, "dates"))
         .then((snapshot) => {
           if (snapshot.exists()) {
-            // console.log(snapshot.val());
+            this.datesAmount = Object.keys(snapshot.val()).length
+            console.log(Object.keys(snapshot.val()).length);
+            console.log(snapshot.val());
             this.testfun(snapshot.val())
           } else {
             alert("No data found");
@@ -194,9 +196,14 @@ input[type="submit"]:hover {
 #datesContainer{
   display: flex;
   color: aliceblue;
-  margin-left: 64px;
-
   margin: 0 0 128px 64px;
+}
+
+li{
+  list-style-type: none;
+  margin: 4px;
+  border: 1px solid white;
+  text-align: center;
 }
 
 </style>
