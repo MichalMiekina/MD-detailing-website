@@ -2,20 +2,16 @@
   <div>
     <h1>Zarezerwuj termin</h1>
 
-    
-
     <div id="datesContainer">
-
-      Dodaj wolny termin:
-      <input type="date" name="" id="date" v-model="date">
-      <button @click="addDate($event)">Dodaj</button>
+      Wybierz datę do zmiany:
+      <input type="date" name="" id="date" v-model="date" />
+      <button @click="addDate($event)">Zmień</button>
 
       <ul>
-      Wolne terminy:
-      <li :date="date" :key="date" v-for="date in dates">{{date}}</li>
+        Wolne terminy:
+        <li :date="date" :key="date" v-for="date in dates">{{ date }}</li>
       </ul>
     </div>
-
 
     <h1>Zaproponuj termin a oddzwonimy</h1>
     <div class="formContainer">
@@ -49,7 +45,7 @@ import emailjs from "emailjs-com";
 // import { getFirestore, collection, getDocs } from "firebase/firestore/lite";
 // Import the functions you need from the SDKs you need
 // import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.4/firebase-app.js";
-import { getDatabase, ref, get, update, child } from "firebase/database";
+import { getDatabase, ref, get, update, remove, child } from "firebase/database";
 
 export default {
   name: "ContactUs",
@@ -66,33 +62,60 @@ export default {
     };
   },
   methods: {
-    addDate(){
-      const db = getDatabase();
-      console.log(this.dates.length)
-      update(ref(db, "dates"), {[(this.datesAmount+1)]: this.date})
-      .then(()=>{
-        // alert("data stored successfully")
-      })
-      .catch((error)=>{
-        alert("unsuccesful, error: "+error)
-      })
-      window.location.reload();
-    },
-    testfun(dates) {
-      this.dates = dates
-      console.log(this.dates)
+    addDate() {
+      if (this.dates.includes(this.date)) {
+        const index = this.dates.indexOf(this.date)
+        alert("you're removing already existing date..."+index);
+        const db = getDatabase();
+        remove(ref(db, "dates/"+index))
+        .then(()=>{
+          alert("succ removed")
+        })
+        .catch((error)=>{
+          alert('unsuscc remove: '+error)
+        })
+      } 
+      else {
+        const db = getDatabase();
+        update(ref(db, "dates"), { [this.datesAmount]: this.date })
+          .then(() => {
+            // alert("data stored successfully")
+          })
+          .catch((error) => {
+            alert("unsuccesful, error: " + error);
+          });
+      }
+      this.buildCalendar()
     },
     getDates() {
-      const db = getDatabase();
+      let db = getDatabase();
 
-      const dbref = ref(db);
+      let dbref = ref(db);
       get(child(dbref, "dates"))
         .then((snapshot) => {
           if (snapshot.exists()) {
-            this.datesAmount = Object.keys(snapshot.val()).length
-            console.log(Object.keys(snapshot.val()).length);
-            console.log(snapshot.val());
-            this.testfun(snapshot.val())
+            
+            let datesTab=[]
+            snapshot.val().forEach(el => {
+              if(el){
+                console.log(el)
+                datesTab.push(el)
+                const index = snapshot.val().indexOf(el)
+                remove(ref(db, "dates/"+index))
+              }
+              
+              
+            });
+            let i=0
+            datesTab.forEach(el=>{
+              update(ref(db, "dates"), {[i]: el})
+              i++
+            })
+            console.log(snapshot.val())
+            console.log(datesTab)
+            // this.datesAmount = Object.keys(snapshot.val()).length;
+            this.datesAmount = snapshot.val().length
+            this.dates = snapshot.val()
           } else {
             alert("No data found");
           }
@@ -102,7 +125,6 @@ export default {
         });
     },
     buildCalendar() {
-      this.testfun();
       this.getDates();
     },
 
@@ -133,10 +155,9 @@ export default {
       this.message = "";
     },
   },
-  beforeMount(){
-    console.log('befmon')
-    this.buildCalendar()
-  }
+  beforeMount() {
+    this.buildCalendar();
+  },
 };
 </script>
 
@@ -193,17 +214,16 @@ input[type="submit"]:hover {
   background-color: #45a049;
 }
 
-#datesContainer{
+#datesContainer {
   display: flex;
   color: aliceblue;
   margin: 0 0 128px 64px;
 }
 
-li{
+li {
   list-style-type: none;
   margin: 4px;
   border: 1px solid white;
   text-align: center;
 }
-
 </style>
