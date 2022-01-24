@@ -15,5 +15,51 @@
     </noscript>
     <div id="app"></div>
     <!-- built files will be auto injected -->
+    <!-- <script type="module">
+      
+      // Import the functions you need from the SDKs you need
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.4/firebase-app.js";
+      import {getDatabase, ref, get, set, child, update, remove} from 'https://www.gstatic.com/firebasejs/9.6.4/firebase-database.js';
+      // TODO: Add SDKs for Firebase products that you want to use
+      // https://firebase.google.com/docs/web/setup#available-libraries
+    
+      // Your web app's Firebase configuration
+      // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+      const firebaseConfig = {
+        apiKey: "AIzaSyC6cJfDfomCONwVTlUrZZop4C7HdYeoMXU",
+        authDomain: "md-detailing-dates.firebaseapp.com",
+        databaseURL: "https://md-detailing-dates-default-rtdb.europe-west1.firebasedatabase.app",
+        projectId: "md-detailing-dates",
+        storageBucket: "md-detailing-dates.appspot.com",
+        messagingSenderId: "143908377299",
+        appId: "1:143908377299:web:0244dd277053854e277a26",
+        measurementId: "G-2DTYVQTDKH"
+      };
+    
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+
+      
+      const db = getDatabase();
+
+      function getDate(){
+        const dbref = ref(db)
+        get(child(dbref, "dates")).then((snapshot)=>{
+          if(snapshot.exists()){
+            console.log(snapshot.val())
+          }
+          else{
+            alert("No data found")
+          }
+
+        })
+        .catch((error)=>{
+          alert('unsuccessful, erorr'+error)
+        })
+      }
+      getDate()
+
+
+    </script> -->
   </body>
 </html>

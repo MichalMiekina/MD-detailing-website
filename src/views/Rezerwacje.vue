@@ -2,20 +2,32 @@
   <div>
     <h1>Zarezerwuj termin</h1>
 
-    <h1>Zaproponuj termin a oddzwonimy</h1>
+    
 
+    <div id="datesContainer">
+
+      Dodaj wolny termin:
+      <input type="date" name="" id="date" v-model="date">
+      <button @click="addDate($event)">Dodaj</button>
+
+      <ul>
+      Wolne terminy:
+      <li :date="date.value" :key="date.value" v-for="date in dates">{{date.value}}</li>
+      </ul>
+    </div>
+
+
+    <h1>Zaproponuj termin a oddzwonimy</h1>
     <div class="formContainer">
       <form ref="form" @submit="sendEmail">
         <input type="text" v-model="name" name="name" placeholder="Imię" />
 
-        <input type="text" v-model="phone" name="phone" placeholder="Numer telefonu" />
-
-        <!-- <input
-          type="email"
-          v-model="email"
-          name="email"
-          placeholder="Twój adres email"
-        /> -->
+        <input
+          type="text"
+          v-model="phone"
+          name="phone"
+          placeholder="Numer telefonu"
+        />
 
         <textarea
           name="message"
@@ -26,6 +38,7 @@
         >
         </textarea>
 
+        <input type="sumbit" value="API" @click="buildCalendar" />
         <input type="submit" value="Send" @click="submit" />
       </form>
     </div>
@@ -34,6 +47,10 @@
 
 <script>
 import emailjs from "emailjs-com";
+// import { getFirestore, collection, getDocs } from "firebase/firestore/lite";
+// Import the functions you need from the SDKs you need
+// import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.4/firebase-app.js";
+import { getDatabase, ref, get, set, child } from "firebase/database";
 
 export default {
   name: "ContactUs",
@@ -43,9 +60,50 @@ export default {
       phone: "",
       email: "",
       message: "",
+      dates: [1, 23, 4],
+      date: "",
+      // dates2: getDates(),
     };
   },
   methods: {
+    addDate(){
+      const db = getDatabase();
+      console.log(this.date)
+      set(ref(db, "dates/"+(this.dates.length+2)), {value: this.date})
+      .then(()=>{
+        alert("data stored successfully")
+      })
+      .catch((error)=>{
+        alert("unsuccesful, error: "+error)
+      })
+      window.location.reload();
+    },
+    testfun(dates) {
+      console.log(dates);
+      this.dates = dates
+    },
+    getDates() {
+      const db = getDatabase();
+
+      const dbref = ref(db);
+      get(child(dbref, "dates"))
+        .then((snapshot) => {
+          if (snapshot.exists()) {
+            // console.log(snapshot.val());
+            this.testfun(snapshot.val())
+          } else {
+            alert("No data found");
+          }
+        })
+        .catch((error) => {
+          alert("unsuccessful, erorr" + error);
+        });
+    },
+    buildCalendar() {
+      this.testfun();
+      this.getDates();
+    },
+
     submit: function () {
       this.$refs.form.submit();
     },
@@ -73,6 +131,10 @@ export default {
       this.message = "";
     },
   },
+  beforeMount(){
+    console.log('befmon')
+    this.buildCalendar()
+  }
 };
 </script>
 
@@ -103,7 +165,6 @@ div > h1 {
   text-align: center;
 }
 
-
 input[type="text"],
 [type="email"],
 textarea {
@@ -129,4 +190,13 @@ input[type="submit"] {
 input[type="submit"]:hover {
   background-color: #45a049;
 }
+
+#datesContainer{
+  display: flex;
+  color: aliceblue;
+  margin-left: 64px;
+
+  margin: 0 0 128px 64px;
+}
+
 </style>
