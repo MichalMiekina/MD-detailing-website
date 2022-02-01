@@ -6,7 +6,7 @@ import Cennik from "./views/Cennik.vue";
 import Oferta from "./views/Oferta.vue";
 import Galeria from "./views/Galeria.vue";
 import Kontakt from "./views/Kontakt.vue";
-import Admin from './views/Admin.vue';
+import Admin from "./views/Admin.vue";
 import { initializeApp } from 'firebase/app';
 
 import VueRouter from "vue-router";
