@@ -33,6 +33,7 @@ export default {
         { id: "5", text: "oferta" ,path: "/oferta",},
         
         { id: "6", text: "kontakt" ,path: "/kontakt",},
+        {id: "7", text: "admin", path: "/admin"}
       ],
     };
   },

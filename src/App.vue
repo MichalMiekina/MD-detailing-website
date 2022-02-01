@@ -51,7 +51,6 @@ body{
 div>h1{
   display: flex;
   justify-content: center;
-  font-family: URW Chancery L, cursive;
   font-size: 300%;
   width: 60%;
 }

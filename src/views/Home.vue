@@ -1,7 +1,7 @@
 <template>
   <div>
     <div id="home">
-      <video autoplay loop>
+      <video autoplay muted loop playsinline >
         <source
           src="https://video.wixstatic.com/video/f59c86_c69f01da723e4f3c9f66995669659eac/1080p/mp4/file.mp4"
           type="video/mp4"
@@ -52,7 +52,6 @@ span.header {
   padding-top: 10%;
   display: flex;
   justify-content: center;
-  font-family: URW Chancery L, cursive;
   font-size: 300%;
   width: 60%;
 }
