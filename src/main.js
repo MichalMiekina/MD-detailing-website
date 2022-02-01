@@ -6,8 +6,8 @@ import Cennik from "./views/Cennik.vue";
 import Oferta from "./views/Oferta.vue";
 import Galeria from "./views/Galeria.vue";
 import Kontakt from "./views/Kontakt.vue";
-import {initializeApp} from 'firebase/app';
-// import {getDatabase, ref, get, child} from 'firebase/database';
+import Admin from './views/Admin.vue';
+import { initializeApp } from 'firebase/app';
 
 import VueRouter from "vue-router";
 
@@ -25,22 +25,6 @@ const firebaseConfig = {
 initializeApp(firebaseConfig);
 // const db = getDatabase();
 
-// function getDate(){
-//   const dbref = ref(db)
-//   get(child(dbref, "dates")).then((snapshot)=>{
-//     if(snapshot.exists()){
-//       console.log(snapshot.val())
-//     }
-//     else{
-//       alert("No data found")
-//     }
-
-//   })
-//   .catch((error)=>{
-//     alert('unsuccessful, erorr'+error)
-//   })
-// }
-// getDate()
 
 Vue.use(VueRouter);
 const routes = [
@@ -50,6 +34,7 @@ const routes = [
   { path: "/oferta", component: Oferta },
   { path: "/galeria", component: Galeria },
   { path: "/kontakt", component: Kontakt },
+  { path: "/admin", component: Admin }
 ];
 
 const router = new VueRouter({

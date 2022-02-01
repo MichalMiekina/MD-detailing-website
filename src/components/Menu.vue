@@ -43,7 +43,8 @@ export default {
 nav {
   width: 100%;
   height: 80px;
-  background-color: #ccc;
+  background-color: #222;
+  color: aliceblue;
   margin: 0;
   display: flex;
   flex-direction: row;

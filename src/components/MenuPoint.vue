@@ -23,7 +23,8 @@ export default {
   transition: background-color 1s ease-out;
 
   :hover{
-    background-color: #aaa;
+    background-color: #888;
+    color: black;
   }
 
   span{
@@ -46,6 +47,6 @@ export default {
 
 a {
   text-decoration: none;
-  color: black;
+  color: white;
 }
 </style>

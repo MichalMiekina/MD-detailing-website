@@ -1,7 +1,7 @@
 <template>
   <div>
-    <Menu :window="window" />
-    <router-view></router-view>
+    <Menu :window="window" id="menu"/>
+    <router-view id="router"></router-view>
   </div>
 </template>
 
@@ -56,4 +56,12 @@ div>h1{
   width: 60%;
 }
 
+
+#menu {
+  position: fixed;
+}
+
+#router{
+  padding-top: 80px;
+}
 </style>

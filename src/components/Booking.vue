@@ -1,8 +1,7 @@
 <template>
   <div>
-    <h1>Zarezerwuj termin</h1>
-
-    <div id="datesContainer">
+    <span class="header" id="bookingHeader">rezerwacje</span>
+    <div id="datesContainer" class="subcontainer">
       <ul>
         Wolne terminy:
         <li :date="date" :key="date" v-for="date in dates">{{ date }}</li>
@@ -11,7 +10,7 @@
     </div>
 
     <h1>Zaproponuj termin a oddzwonimy</h1>
-    <div class="formContainer">
+    <div id="formContainer" class="subcontainer">
       <form ref="form" @submit="sendEmail">
         <input type="text" v-model="name" name="name" placeholder="Imię" />
 
@@ -39,7 +38,14 @@
 
 <script>
 import emailjs from "emailjs-com";
-import { getDatabase, ref, get, update, remove, child } from "firebase/database";
+import {
+  getDatabase,
+  ref,
+  get,
+  update,
+  remove,
+  child,
+} from "firebase/database";
 
 export default {
   name: "ContactUs",
@@ -62,24 +68,23 @@ export default {
       get(child(dbref, "dates"))
         .then((snapshot) => {
           if (snapshot.exists()) {
-            
-            let datesTab=[]
-            snapshot.val().forEach(el => {
-              if(el){
-                console.log(el)
-                datesTab.push(el)
-                const index = snapshot.val().indexOf(el)
-                remove(ref(db, "dates/"+index))
+            let datesTab = [];
+            snapshot.val().forEach((el) => {
+              if (el) {
+                console.log(el);
+                datesTab.push(el);
+                const index = snapshot.val().indexOf(el);
+                remove(ref(db, "dates/" + index));
               }
             });
-            
-            let i=0
-            datesTab.forEach(el=>{
-              update(ref(db, "dates"), {[i]: el})
-              i++
-            })
-            this.datesAmount = snapshot.val().length
-            this.dates = snapshot.val()
+
+            let i = 0;
+            datesTab.forEach((el) => {
+              update(ref(db, "dates"), { [i]: el });
+              i++;
+            });
+            this.datesAmount = snapshot.val().length;
+            this.dates = snapshot.val();
           } else {
             alert("No data found");
           }
@@ -136,8 +141,7 @@ div > h1 {
   width: 100%;
   margin-bottom: 16px;
 }
-.formContainer {
-  display: flex;
+#formContainer {
   margin: auto;
   text-align: center;
   border-radius: 5px;
@@ -145,11 +149,9 @@ div > h1 {
   padding: 20px;
   width: 60%;
 }
-
-.mapContainer {
-  padding-top: 36px;
-  margin: auto;
-  text-align: center;
+#datesContainer {
+  color: aliceblue;
+  margin: 0 0 128px 64px;
 }
 
 input[type="text"],
@@ -178,11 +180,7 @@ input[type="submit"]:hover {
   background-color: #45a049;
 }
 
-#datesContainer {
-  display: flex;
-  color: aliceblue;
-  margin: 0 0 128px 64px;
-}
+
 
 li {
   list-style-type: none;
@@ -190,4 +188,5 @@ li {
   border: 1px solid white;
   text-align: center;
 }
+
 </style>
