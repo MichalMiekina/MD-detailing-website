@@ -3,9 +3,13 @@
     <span class="header" id="bookingHeader">rezerwacje</span>
     <div id="datesContainer" class="subcontainer">
       <ul>
-        Wolne terminy:
+        Wybierz wolny termin:
         <li :date="date" :key="date" v-for="date in dates">{{ date }}</li>
-        <li>Inny</li>
+        <li>
+          <router-link class="routerPoint" :to="adminPath">
+            edytuj...
+          </router-link>
+        </li>
       </ul>
     </div>
 
@@ -58,6 +62,7 @@ export default {
       dates: [1, 23, 4],
       date: "",
       datesAmount: 0,
+      adminPath: "/admin"
     };
   },
   methods: {
@@ -180,13 +185,10 @@ input[type="submit"]:hover {
   background-color: #45a049;
 }
 
-
-
 li {
   list-style-type: none;
   margin: 4px;
   border: 1px solid white;
   text-align: center;
 }
-
 </style>

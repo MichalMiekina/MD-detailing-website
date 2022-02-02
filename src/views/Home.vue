@@ -12,25 +12,41 @@
       <span class="header" id="homeHeader">M&D Detailing</span>
     </div>
 
-    <Booking />
+    <Prices id="prices" />
 
-    <Contact />
+    <Booking id="booking" />
+
+    <Gallery id="gallery" />
+
+    <Offer id="offer" />
+
+    <Contact id="contact" />
   </div>
 </template>
 
 <script>
+import Prices from "../components/Prices.vue"
 import Booking from "../components/Booking.vue";
+import Gallery from "../components/Gallery.vue";
+import Offer from "../components/Offer.vue";
 import Contact from "../components/Contact.vue";
 
 export default {
   components: {
+    Prices,
     Booking,
+    Gallery,
+    Offer,
     Contact,
   },
 };
 </script>
 
 <style>
+html {
+  scroll-behavior: smooth;
+}
+
 div {
   display: block;
 }

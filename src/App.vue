@@ -58,6 +58,7 @@ div>h1{
 
 #menu {
   position: fixed;
+  z-index: 5;
 }
 
 #router{

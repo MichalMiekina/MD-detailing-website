@@ -7,11 +7,13 @@
         Wolne terminy:
         <li :date="date" :key="date" v-for="date in dates">{{ date }}</li>
         <li>Inny</li>
+        
       </ul>
+      
     </div>
 
     <h1>Zaproponuj termin a oddzwonimy</h1>
-    <div class="formContainer">
+    <div id="formContainer">
       <form ref="form" @submit="sendEmail">
         <input type="text" v-model="name" name="name" placeholder="Imię" />
 
@@ -136,7 +138,7 @@ div > h1 {
   width: 100%;
   margin-bottom: 16px;
 }
-.formContainer {
+#formContainer {
   display: flex;
   margin: auto;
   text-align: center;
@@ -146,10 +148,10 @@ div > h1 {
   width: 60%;
 }
 
-.mapContainer {
-  padding-top: 36px;
-  margin: auto;
-  text-align: center;
+#datesContainer {
+  display: flex;
+  color: aliceblue;
+  margin: 0 0 128px 64px;
 }
 
 input[type="text"],
@@ -176,12 +178,6 @@ input[type="submit"] {
 
 input[type="submit"]:hover {
   background-color: #45a049;
-}
-
-#datesContainer {
-  display: flex;
-  color: aliceblue;
-  margin: 0 0 128px 64px;
 }
 
 li {

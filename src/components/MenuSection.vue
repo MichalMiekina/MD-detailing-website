@@ -1,35 +1,43 @@
 <template>
-  <div class="point" v-if="window.width > 800">
-    <router-link class="routerPoint" :to="point.path">
-      <span>{{ point.text }}</span>
-    </router-link>
+  <div class="section " v-if="window.width > 800">
+    <div class="routerPoint">
+      <span @click="goto(section.path)">{{ section.text }}</span>
+    </div>
+    
   </div>
 </template>
 
 <script>
 export default {
-  props: ["point", "window"],
+  props: ["section", "window"],
   data() {
     return {};
+  },
+  methods: {
+    goto(id) {
+      document.getElementById(id).scrollIntoView({
+        behavior: "smooth",
+      });
+    },
   },
 };
 </script>
 
 <style lang="scss">
-.point {
+.section {
   height: 80px;
   width: 100%;
   cursor: pointer;
   transition: background-color 1s ease-out;
 
-  :hover{
+  :hover {
     background-color: #888;
     color: black;
   }
 
-  span{
-  justify-content: center;
-  font: 125% "Monaco", monospace;
+  span {
+    justify-content: center;
+    font: 125% "Monaco", monospace;
   }
 }
 
@@ -40,7 +48,7 @@ export default {
   width: 100%;
   height: 100%;
 
-  span{
+  span {
     display: flex;
   }
 }

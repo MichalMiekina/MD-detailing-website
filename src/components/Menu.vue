@@ -1,39 +1,36 @@
 <template>
   <div>
     <nav id="menu">
-      <MenuPoint
-        :point="point"
-        :key="point.id"
-        v-for="point in points"
+      <MenuSection
+        :section="section"
+        :key="section.id"
+        v-for="section in sections"
         :window="window"
-        
       />
-      <MenuBurger :window="window" :points="points" />
+      <MenuBurger :window="window" :sections="sections" />
     </nav>
   </div>
 </template>
 
 <script>
-import MenuPoint from "./MenuPoint.vue";
+import MenuSection from "./MenuSection.vue";
 import MenuBurger from "./MenuBurger.vue";
 
 export default {
   props: ["window"],
   components: {
-    MenuPoint,
+    MenuSection,
     MenuBurger,
   },
   data() {
     return {
-      points: [
-        { id: "1", text: "home" ,path: "/", },
-        { id: "2", text: "cennik" ,path: "/cennik",},
-        { id: "3", text: "rezerwacje" ,path: "/rezerwacje",},
-        { id: "4", text: "galeria" ,path: "/galeria",},
-        { id: "5", text: "oferta" ,path: "/oferta",},
-        
-        { id: "6", text: "kontakt" ,path: "/kontakt",},
-        {id: "7", text: "admin", path: "/admin"}
+      sections: [
+        { id: "1", text: "home", path: "home" },
+        { id: "2", text: "cennik", path: "prices" },
+        { id: "3", text: "rezerwacje", path: "booking" },
+        { id: "4", text: "galeria", path: "gallery" },
+        { id: "5", text: "oferta", path: "offer" },
+        { id: "6", text: "kontakt", path: "contact" },
       ],
     };
   },
