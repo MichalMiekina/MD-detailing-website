@@ -1,6 +1,7 @@
 <template>
   <div>
     <span class="header" id="bookingHeader">kontakt</span>
+    <p>numer telefonu: xxx-yyy-zzz; aaa-bbb-ccc</p>
 
     <div class="mapContainer">
       <iframe
@@ -32,5 +33,8 @@ export default {
   text-align: center;
 }
 
+p{
+  text-align: center;
+}
 
 </style>
