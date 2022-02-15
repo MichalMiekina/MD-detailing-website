@@ -1,6 +1,7 @@
 <template>
   <div>
     <div id="home">
+      
       <video autoplay muted loop playsinline >
         <source
           src="https://video.wixstatic.com/video/f59c86_c69f01da723e4f3c9f66995669659eac/1080p/mp4/file.mp4"
@@ -8,7 +9,7 @@
         />
         Your browser does not support the video tag.
       </video>
-
+      <img src="../assets/awards/1.jpg" alt="" id="award">
       <span class="header" id="homeHeader">M&D Detailing</span>
     </div>
 
@@ -51,14 +52,27 @@ div {
   display: block;
 }
 
-body {
-  background-color: #ffffff;
+#homeHeader{
+  position: absolute;
+  top:100px;
+  width: 100%;
+  z-index:1;
+  font-size: 500%;
 }
+
 
 video {
   width: 100%;
-  z-index: -1;
+  z-index: 0;
+  position: relative;
+}
+
+#award{
   position: absolute;
+  left:0;
+  top:80px;
+  z-index: 1;
+  width: 25%;
 }
 
 span.header {

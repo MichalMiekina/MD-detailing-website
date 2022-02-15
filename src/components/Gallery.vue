@@ -1,6 +1,6 @@
 <template>
   <div :style="{ width: '100%', height: '100vh' }">
-    <h1>Zobacz jak zmieniamy auto</h1>
+    <h1>Galleria</h1>
     <!-- <Carousel3d /> -->
     <!-- <ul>
       <li v-for="slide in slides" :key="slide"><img src="slide" alt=""></li>

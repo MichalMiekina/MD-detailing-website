@@ -1,41 +1,49 @@
 <template>
   <div>
-    <span class="header" id="bookingHeader">rezerwacje</span>
-    <div id="datesContainer" class="subcontainer">
-      <ul>
-        Wybierz wolny termin:
-        <li :date="date" :key="date" v-for="date in dates">{{ date }}</li>
-        <li>
-          <router-link class="routerPoint" :to="adminPath">
-            edytuj...
-          </router-link>
-        </li>
-      </ul>
-    </div>
+    <img
+      src="https://www.avtoradosti.com.ua/files/2020/news/zashitaLKP/polishing.jpg"
+      alt=""
+    />
+    <div id="container">
+      <h1>rezerwacje</h1>
+      <div id="datesContainer" class="subcontainer">
+        <ul>
+          Wybierz wolny termin:
+          <li :date="date" :key="date" v-for="date in dates">{{ date }}</li>
+          <li>
+            <router-link class="routerPoint" :to="adminPath">
+              edytuj...
+            </router-link>
+          </li>
+        </ul>
+      </div>
 
-    <h1>Zaproponuj termin a oddzwonimy</h1>
-    <div id="formContainer" class="subcontainer">
-      <form ref="form" @submit="sendEmail">
-        <input type="text" v-model="name" name="name" placeholder="Imię" />
+      <div id="mailsContainer">
+        <h1>Zaproponuj termin a oddzwonimy</h1>
+        <div id="formContainer" class="subcontainer">
+          <form ref="form" @submit="sendEmail">
+            <input type="text" v-model="name" name="name" placeholder="Imię" />
 
-        <input
-          type="text"
-          v-model="phone"
-          name="phone"
-          placeholder="Numer telefonu"
-        />
+            <input
+              type="text"
+              v-model="phone"
+              name="phone"
+              placeholder="Numer telefonu"
+            />
 
-        <textarea
-          name="message"
-          v-model="message"
-          cols="30"
-          rows="5"
-          placeholder="Wpisz przynajmniej jeden termin lub przedział i dodatkowe uwagi"
-        >
-        </textarea>
+            <textarea
+              name="message"
+              v-model="message"
+              cols="30"
+              rows="5"
+              placeholder="Wpisz przynajmniej jeden termin lub przedział i dodatkowe uwagi"
+            >
+            </textarea>
 
-        <input type="submit" value="Send" @click="submit" />
-      </form>
+            <input type="submit" value="Send" @click="submit" />
+          </form>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -62,7 +70,7 @@ export default {
       dates: [1, 23, 4],
       date: "",
       datesAmount: 0,
-      adminPath: "/admin"
+      adminPath: "/admin",
     };
   },
   methods: {
@@ -137,15 +145,10 @@ export default {
 
 
 <style scoped>
-* {
-  box-sizing: border-box;
+body {
+  color: black;
 }
-div > h1 {
-  font-size: 200%;
-  text-align: center;
-  width: 100%;
-  margin-bottom: 16px;
-}
+
 #formContainer {
   margin: auto;
   text-align: center;
@@ -185,10 +188,41 @@ input[type="submit"]:hover {
   background-color: #45a049;
 }
 
+ul {
+  display: block;
+}
+
 li {
   list-style-type: none;
   margin: 4px;
   border: 1px solid white;
   text-align: center;
+}
+
+img {
+  position: relative;
+  z-index: 0;
+  width: 100%;
+}
+
+#booking {
+  position: relative;
+}
+
+#container {
+  position: absolute;
+  top: 20%;
+  z-index: 1;
+}
+
+h1 {
+  width: 100%;
+  font-size: 300%;
+}
+
+#mailsContainer {
+  width: 100%;
+  align-items: center;
+  margin-left: 50%;
 }
 </style>
